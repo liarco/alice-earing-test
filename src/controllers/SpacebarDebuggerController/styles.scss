@@ -1,0 +1,17 @@
+*[data-controller=spacebar-debugger] {
+  @apply mt-6;
+  @apply bg-gray-500;
+  @apply rounded-md;
+  @apply text-white;
+  @apply text-center;
+  @apply px-4 py-1;
+
+  &.pressed {
+    @apply bg-green-500;
+
+    &::after {
+      @apply inline;
+      content: ' it works!';
+    }
+  }
+}

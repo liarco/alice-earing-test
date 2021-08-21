@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alice - Hearing test</title>
+
+    <link rel="stylesheet" href="build/app.css">
+    
+    <script src="build/runtime.js" defer></script>
+    <script src="build/app.js" defer></script>
+</head>
+<body>
+    <div class="card">
+        <h1>Alice - Hearing test</h1>
+
+        <p>
+            Hi, welcome to <strong>Alice</strong> an extremely basic web-app to test your hearing
+            against different frequencies.
+        </p>
+
+        <h2>How does it work?</h2>
+
+        <p>
+            Once you start a new round a few sounds will be played at random intervals. Press the
+            <strong>spacebar key</strong> once each for each sound you can hear.
+        </p>
+
+        <p>
+            Each keypress will be checked as follows:
+        </p>
+
+        <ul>
+            <li>
+                <strong>Right guess:</strong>
+                you are right! A new sound is playing right now</li>
+            <li>
+                <strong>Retrigger:</strong>
+                a sound is actually playing, but you already spotted it a few moments ago... are
+                you cheating?!??</li>
+            <li>
+                <strong>Bad guess:</strong>
+                you are wrong! Nothing is playing</li>
+        </ul>
+
+        <p>
+            You can run 3 test modes:
+        </p>
+
+        <ul>
+            <li>
+                <strong>From LOW to HIGH:</strong>
+                the frequencies will play from the lowest to the highest
+            </li>
+            <li>
+                <strong>From HIGH to LOW:</strong>
+                the frequencies will play from the highest to the lowest
+            </li>
+            <li>
+                <strong>To random:</strong>
+                the frequencies will be picked randomly from the available ones <em>(read below for
+                fine-tunings)</em>
+            </li>
+        </ul>
+
+        <h2>How to start?</h2>
+
+        <p>
+            Use the controls below to start the game. <strong>Please watch out your device volume!</strong>
+        </p>
+
+        <div class="controls">
+            <label for="tests-number">Max tests number:</label>
+            <input id="tests-number" type="number" min="1" value="7">
+
+            <label for="test-mode">Mode:</label>
+            <select id="test-mode">
+                <option value="TO_TOP">From LOW to HIGH</option>
+                <option value="TO_BOTTOM">From HIGH to LOW</option>
+                <option value="RANDOM">Random</option>
+            </select>
+
+            <button id="test-toggler"><span>New</span> round</button>
+        </div>
+
+        <h2>FAQs</h2>
+
+        <p>
+            <strong>Where is the GUI?!?</strong><br>
+            This project is just a proof of concept so no real GUI has been developed. You can open
+            the devtools to check the status and final results on different log levels (debug, info,
+            warning and error).
+        </p>
+
+        <p>
+            <strong>Input is not working... #@?!</strong><br>
+            Please make sure that the current focus is on the page, use the widget below to test
+            it.
+        </p>
+
+        <div data-controller="spacebar-debugger">
+            Press the spacebar to debug it...
+        </div>
+    </div>
+</body>
+</html>

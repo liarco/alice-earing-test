@@ -1,0 +1,32 @@
+{
+  "name": "alice-hearing-test",
+  "version": "1.0.0",
+  "description": "A simple web-based application to test your hearing.",
+  "repository": "git@github.com:liarco/alice-hearing-test.git",
+  "main": "src/app.ts",
+  "author": "Marco Lipparini <developer@liarco.net>",
+  "license": "MIT",
+  "dependencies": {
+    "@symfony/stimulus-bridge": "^2.1.0",
+    "@symfony/webpack-encore": "^1.5.0",
+    "@tailwindcss/typography": "^0.4.1",
+    "@types/webpack-env": "^1.16.0",
+    "autoprefixer": "^10.2.6",
+    "core-js": "^3.0.0",
+    "http-server": "^0.12.3",
+    "postcss-loader": "^5.0.0",
+    "sass": "^1.34.1",
+    "sass-loader": "^11.0.0",
+    "stimulus": "^2.0.0",
+    "tailwindcss": "^2.2.7",
+    "ts-loader": "^8.0.1",
+    "typescript": "^4.3.2",
+    "webpack-notifier": "^1.6.0"
+  },
+  "scripts": {
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress",
+    "start": "http-server dist"
+  }
+}

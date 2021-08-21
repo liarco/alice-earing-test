@@ -1,0 +1,91 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  body {
+    @apply bg-gray-700;
+  }
+
+  .card {
+    @apply prose;
+    @apply mt-6;
+    @apply mb-6;
+    @apply mx-auto;
+    @apply p-12;
+    @apply bg-gradient-to-b;
+    @apply from-gray-200;
+    @apply to-gray-300;
+    @apply border-gray-500;
+    @apply rounded-lg;
+    @apply shadow-md;
+
+    h1 {
+      @apply text-blue-500;
+    }
+
+    h2 {
+      @apply mt-6;
+      @apply mb-1;
+    }
+
+    p {
+      @apply mb-0;
+    }
+
+    ul {
+      @apply mt-0;
+
+      & > li {
+        @apply m-0;
+
+        &::before {
+          @apply bg-black;
+        }
+      }
+    }
+
+    div.controls {
+      @apply mt-2;
+      @apply flex;
+      @apply flex-col;
+
+      label {
+        @apply mt-2;
+        @apply text-sm;
+        @apply font-bold;
+      }
+
+      input {
+        @apply p-1;
+      }
+
+      select {
+        @apply mb-2;
+        @apply pt-2;
+        @apply pb-2;
+      }
+
+      button {
+        @apply mt-2;
+
+        &.running {
+          @apply bg-red-500;
+          @apply hover:bg-red-600;
+        }
+      }
+    }
+  }
+
+  button {
+    @apply bg-blue-500;
+    @apply hover:bg-blue-600;
+    @apply rounded-md;
+    @apply text-white;
+    @apply px-4 py-1;
+
+    &::first-letter {
+      @apply uppercase;
+    }
+  }
+}
