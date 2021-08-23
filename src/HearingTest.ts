@@ -12,6 +12,7 @@ const FREQUENCIES: Frequency[] = [
 ];
 const DEFAULT_MAX_TESTS = FREQUENCIES.length;
 const INITIAL_ROUND_STATS: RoundStats = {
+  totalPlayedTests: 0,
   highestGuessedFrequency: null,
   rightGuesses: 0,
   retriggered: 0,
@@ -26,6 +27,7 @@ interface Frequency {
   age: string;
 }
 interface RoundStats {
+  totalPlayedTests: number;
   highestGuessedFrequency: Frequency|null;
   rightGuesses: number;
   retriggered: number;
@@ -81,9 +83,9 @@ class Sound {
 
   public stop()
   {
-    console.debug('Stopping sound...');
-
     if (this.playing) {
+      console.debug('Stopping sound...');
+
       this.playing = false;
       this.hearingTest.currentFrequency = null;
 
@@ -153,7 +155,11 @@ export class HearingTest {
     this.active = false;
     this.currentSound?.stop();
 
-    console.log('RESULTS:', JSON.stringify(this.currentRoundStats, null, 2));
+    console.log(`You have heard ${this.currentRoundStats.rightGuesses} out of ${this.currentRoundStats.totalPlayedTests} sounds, the highest frequency was ${this.currentRoundStats.highestGuessedFrequency?.hertz} Hz (${this.currentRoundStats.highestGuessedFrequency?.age}).`);
+    console.log(`Reriggered: ${this.currentRoundStats.retriggered}`);
+    console.log(`Bad guesses: ${this.currentRoundStats.badGuesses}`);
+
+    console.debug('NERD STATS:', JSON.stringify(this.currentRoundStats, null, 2));
   }
 
   public loop()
@@ -179,6 +185,7 @@ export class HearingTest {
       this.playSound(nextFrequency);
 
       // Update stats...
+      this.currentRoundStats.totalPlayedTests++;
       if (this.currentRoundStats.playedFrequencies[nextFrequency.hertz] === undefined) {
         this.currentRoundStats.playedFrequencies[nextFrequency.hertz] = {
           frequency: nextFrequency,
@@ -204,7 +211,7 @@ export class HearingTest {
           // Update stats...
           this.currentRoundStats.rightGuesses++;
 
-          if (this.currentRoundStats.highestGuessedFrequency?.hertz ?? 0 < this.currentFrequency.hertz) {
+          if ((this.currentRoundStats.highestGuessedFrequency?.hertz ?? 0) < this.currentFrequency.hertz) {
             this.currentRoundStats.highestGuessedFrequency = this.currentFrequency;
           }
       
